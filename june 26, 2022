@@ -1,0 +1,16 @@
+
+class Solution {
+    public int maxScore(int[] cardPoints, int k) {
+        int maxS, curS;
+        maxS = curS = IntStream.range(0, k).map(i -> cardPoints[i]).sum();
+        int start = k - 1, end = cardPoints.length - 1;
+        for (int i = 0; i < k; i++){
+            curS = curS + cardPoints[end] - cardPoints[start];
+            maxS = Math.max(maxS, curS);
+            end -= 1;
+            start -= 1;
+        }
+        return maxS;
+        
+    }
+}
